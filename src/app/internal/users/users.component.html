@@ -1,0 +1,36 @@
+<section>
+  <div class="pb-4" nz-row nzJustify="space-between">
+    <div nz-col nzSpan="auto">
+      <h1>Usuários</h1>
+    </div>
+    <div nz-col nzSpan="auto">
+      <button nz-button nzType="primary" [nzLoading]="loadingButton" (click)="showUserDrawer()">
+        <span nz-icon nzType="plus"></span>
+        Criar usuário
+      </button>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <nz-table [nzLoading]="loading" #basicTable [nzData]="users">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let data of basicTable.data"
+            (click)="showUserDrawer(data.id)"
+          >
+            <td>{{ data.username }}</td>
+            <td>{{ data.email }}</td>
+            <td>{{ data.password }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</section>
